@@ -5,7 +5,7 @@
     "username": "rqiwwkpv",
     "password": "easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb",
     "database": "rqiwwkpv",
-    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "entities": ["src/**/*.entity{.ts,.js}"],
     "synchronize": true
   }
   

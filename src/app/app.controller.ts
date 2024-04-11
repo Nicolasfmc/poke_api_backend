@@ -12,8 +12,13 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('user/get-user')
+  @Get('/user/get-user')
   getUser(@Query() data: GetUserDto): Promise<Users> {
     return this.appService.getUser(data.id);
+  }
+
+  @Get('/user/get-all')
+  getAllUsers(): Promise<Users[]> {
+    return this.appService.getAllUsers();
   }
 }

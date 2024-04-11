@@ -10,16 +10,16 @@ import { AppRepository } from './app.repository';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgres://rqiwwkpv:easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb@isabelle.db.elephantsql.com/rqiwwkpv',
+      host: 'isabelle.db.elephantsql.com',
       port: 5432,
       username: 'rqiwwkpv',
       password: 'easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb',
       database: 'rqiwwkpv',
-      entities: [Users, Teams],
     }),
-    TypeOrmModule.forFeature([AppRepository]),
+    TypeOrmModule.forFeature([Users, Teams]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppRepository],
+  exports: [AppRepository],
 })
 export class AppModule {}
