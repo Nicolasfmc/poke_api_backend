@@ -5,16 +5,16 @@ import { AppService } from './app.service';
 import { Users } from './entities/users.entity';
 import { Teams } from './entities/teams.entity';
 import { AppRepository } from './app.repository';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'isabelle.db.elephantsql.com',
-      port: 5432,
-      username: 'rqiwwkpv',
-      password: 'easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb',
-      database: 'rqiwwkpv',
+      url: process.env.DATABASE_URL,
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     TypeOrmModule.forFeature([Users, Teams]),
   ],
