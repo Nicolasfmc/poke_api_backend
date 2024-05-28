@@ -11,7 +11,7 @@ export class Users {
   @Column({ name: 'SENHA' })
   senha: string;
 
-  @Column({ name: 'DTA_CADASTRO' })
+  @Column({ name: 'DTA_CADASTRO', default: 'NOW()' })
   dtaCadastro: string;
 
   @Column({ name: 'IND_INATIVO' })

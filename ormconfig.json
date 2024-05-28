@@ -1,11 +1,11 @@
 {
-    "type": "postgres",
-    "host": "postgres://rqiwwkpv:easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb@isabelle.db.elephantsql.com/rqiwwkpv",
-    "port": 5432,
-    "username": "rqiwwkpv",
-    "password": "easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb",
-    "database": "rqiwwkpv",
-    "entities": ["src/**/*.entity{.ts,.js}"],
-    "synchronize": true
-  }
+  "type": "postgres",
+  "host": "postgres://rqiwwkpv:easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb@isabelle.db.elephantsql.com/rqiwwkpv",
+  "port": 5432,
+  "username": "rqiwwkpv",
+  "password": "easCX2HNzuZ9w4vnfI1D_7MSNhqeWGtb",
+  "database": "rqiwwkpv",
+  "entities": ["src/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
   

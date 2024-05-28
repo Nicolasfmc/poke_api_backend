@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { Users } from './entities/users.entity';
 import { AppRepository } from './app.repository';
-import { SaveUserDto } from './dto/save-user.dto';
-import { StatusReponse } from 'src/interfaces';
+import { RegisterUserDto } from './dto/register-user.dto';
+import { RegisterUserRes, StatusResponse } from 'src/interfaces';
 import { Teams } from './entities/teams.entity';
 import { SaveTeamDto } from './dto/save-team.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class AppService {
@@ -32,15 +33,19 @@ export class AppService {
     return result;
   }
 
-  async saveUser(data: SaveUserDto): Promise<StatusReponse> {
-    return await this.saveUser(data);
+  async registerUser(data: RegisterUserDto): Promise<RegisterUserRes> {
+    return await this.appRepo.registerUser(data);
   }
 
-  async deleteUser(id: number): Promise<StatusReponse> {
+  async updateUser(data: UpdateUserDto): Promise<StatusResponse> {
+    return await this.appRepo.updateUser(data);
+  }
+
+  async deleteUser(id: number): Promise<StatusResponse> {
     const deleteTeam = await this.deleteTeam(id);
 
     if (deleteTeam.status === 'ok') {
-      return await this.deleteUser(id);
+      return await this.appRepo.deleteUser(id);
     } else {
       return deleteTeam;
     }
@@ -51,7 +56,7 @@ export class AppService {
     return await this.appRepo.getTeam(idOwner);
   }
 
-  async saveTeam(data: SaveTeamDto[]): Promise<StatusReponse> {
+  async saveTeam(data: SaveTeamDto[]): Promise<StatusResponse> {
     try {
       await this.appRepo.deleteTeam(data[0].idOwner);
 
@@ -65,7 +70,7 @@ export class AppService {
     }
   }
 
-  async deleteTeam(idOwner: number): Promise<StatusReponse> {
+  async deleteTeam(idOwner: number): Promise<StatusResponse> {
     return this.appRepo.deleteTeam(idOwner);
   }
 }
