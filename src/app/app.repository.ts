@@ -50,6 +50,7 @@ export class AppRepository {
     username,
     senha,
     idade,
+    indPlano,
     indAdmin,
     indInativo,
   }: RegisterUserDto): Promise<RegisterUserRes> {
@@ -64,14 +65,15 @@ export class AppRepository {
       const res = this.entityManager.transaction(
         async (transactionalEntityManager) => {
           const insertQuery = `
-          INSERT INTO PK_USERS (USERNAME, SENHA, IDADE, IND_ADMIN, IND_INATIVO)
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO PK_USERS (USERNAME, SENHA, IDADE, IND_PLANO, IND_ADMIN, IND_INATIVO)
+          VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING ID
         `;
           const result = await transactionalEntityManager.query(insertQuery, [
             username,
             senha,
             idade,
+            indPlano,
             indAdmin,
             indInativo,
           ]);

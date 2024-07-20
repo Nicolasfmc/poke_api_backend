@@ -22,4 +22,7 @@ export class Users {
 
   @Column({ name: 'IDADE' })
   idade: number;
+
+  @Column({ name: 'IND_PLANO', nullable: true })
+  indPlano?: number;
 }

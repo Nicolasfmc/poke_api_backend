@@ -15,6 +15,10 @@ export class RegisterUserDto {
 
   @IsNumber()
   @IsOptional()
+  indPlano: number;
+
+  @IsNumber()
+  @IsOptional()
   indInativo: number;
 
   @IsNumber()
