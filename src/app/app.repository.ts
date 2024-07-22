@@ -101,6 +101,7 @@ export class AppRepository {
     senha,
     idade,
     indAdmin,
+    indPlano,
     indInativo,
   }: UpdateUserDto): Promise<StatusResponse> {
     const userExists = await this.entityManager.query(
@@ -135,18 +136,20 @@ export class AppRepository {
       fieldsToUpdate.push(`IND_INATIVO = $${fieldsToUpdate.length + 1}`);
       values.push(indInativo);
     }
+    if (indPlano !== undefined) {
+      fieldsToUpdate.push(`IND_PLANO = $${fieldsToUpdate.length + 1}`);
+      values.push(indPlano);
+    }
 
     if (fieldsToUpdate.length === 0) {
       throw new BadRequestException('Nenhum campo para atualizar!');
     }
 
-    values.push(id);
-
     const updateQuery = `
       UPDATE PK_USERS
       SET ${fieldsToUpdate.join(', ')}
-      WHERE ID = $${fieldsToUpdate.length + 1}
-      RETURNING ID, USERNAME, IDADE, IND_ADMIN, IND_INATIVO
+      WHERE ID = ${id}
+      RETURNING ID, USERNAME, IDADE, IND_ADMIN, IND_INATIVO, IND_PLANO
     `;
 
     try {

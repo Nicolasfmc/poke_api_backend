@@ -24,4 +24,8 @@ export class UpdateUserDto {
   @IsNumber()
   @IsOptional()
   indAdmin?: number;
+
+  @IsNumber()
+  @IsOptional()
+  indPlano?: number;
 }
