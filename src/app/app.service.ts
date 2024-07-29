@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Users } from './entities/users.entity';
 import { AppRepository } from './app.repository';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -27,7 +27,7 @@ export class AppService {
     const result = await this.appRepo.getUserLogin(username, senha);
 
     if (Array.isArray(result) && result.length < 1) {
-      throw new Error('Usuário não encontrado!');
+      throw new NotFoundException('Usuário e/ou senha não encontrados!');
     }
 
     return result;

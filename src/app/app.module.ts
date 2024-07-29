@@ -6,6 +6,7 @@ import { Users } from './entities/users.entity';
 import { Teams } from './entities/teams.entity';
 import { AppRepository } from './app.repository';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true,
     }),
     TypeOrmModule.forFeature([Users, Teams]),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppRepository],

@@ -7,6 +7,7 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Users } from './entities/users.entity';
@@ -20,8 +21,10 @@ import { SaveTeamDto } from './dto/save-team.dto';
 import { DeleteUserDto } from './dto/delete-user.dto';
 import { DeleteTeamDto } from './dto/delete-team.dto copy';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller()
+@UseGuards(JwtAuthGuard)
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
