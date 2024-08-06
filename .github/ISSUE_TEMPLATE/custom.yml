@@ -1,0 +1,48 @@
+name: Relatar Bug
+description: Use este template para relatar um bug.
+title: "[BUG]: "
+labels: bug
+assignees: []
+body:
+  - type: input
+    id: resumobug
+    attributes:
+      label: Resumo do Bug
+      description: Resuma o bug encontrado
+      placeholder: ex. Interface com parâmetros não ultilizados
+    validations:
+      required: true
+  - type: input
+    id: path
+    attributes:
+      label: Caminho para o arquivo com problema
+      description: Qual o caminho para o arquivo com problema?
+      placeholder: ex. src/pages/index.ts
+    validations:
+      required: true
+  - type: dropdown
+    id: authorlastcommit
+    attributes:
+      label: Autor do último commit no método
+      description: Quem foi o autor do último commit no método encontrado com problema?
+      options:
+        - Anderson
+        - Carlos
+        - Emily
+        - Enzo
+        - Felipe
+        - Flávia
+        - Guilherme
+        - Henrique
+        - Mathias
+        - Nicolas Boeno
+        - Nicolas Ferreira
+        - Tiago
+        - Vinicius
+    validations:
+      required: true       
+  - type: textarea
+    attributes:
+      label: Capturas de Tela
+      description: Adicione capturas de tela para ilustrar o problema, se possível.
+      placeholder: "Arraste e solte as imagens ou insira URLs aqui..."
