@@ -46,3 +46,5 @@ body:
       label: Capturas de Tela
       description: Adicione capturas de tela para ilustrar o problema, se possível.
       placeholder: "Arraste e solte as imagens ou insira URLs aqui..."
+    validations:
+      required: true  
