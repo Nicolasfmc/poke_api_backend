@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { AppService } from '../app.service';
 import { GetUserLoginDto } from '../dto/get-user-login.dto';
+import { AuthRepository } from './auth.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly appService: AppService,
+    private readonly authRepository: AuthRepository,
   ) {}
 
   async login({ username, senha }: GetUserLoginDto) {
@@ -15,7 +15,7 @@ export class AuthService {
 
     if (user) {
       const payload = { username };
-  
+
       return {
         accessToken: this.jwtService.sign(payload),
       };
@@ -23,6 +23,12 @@ export class AuthService {
   }
 
   async validateUser(username: string, senha: string): Promise<any> {
-    return await this.appService.getUserLogin(username, senha);
+    const result = await this.authRepository.getUserLogin(username, senha);
+
+    if (Array.isArray(result) && result.length < 1) {
+      throw new NotFoundException('Usuário e/ou senha incorretos!');
+    }
+
+    return result;
   }
 }
