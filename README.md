@@ -1,73 +1,93 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# PokeConsult - Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the backend of the PokeConsult project, responsible for handling user management, team data, and communication with the PokeAPI. Built with Node.js and NestJS, the backend is designed to provide secure and efficient services for the frontend of the consulting platform.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [API Endpoints](#api-endpoints)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
+
+- **User Management**: APIs for creating, updating, and managing user accounts.
+- **Team Management**: Endpoints for saving and retrieving Pokémon teams.
+- **Authentication**: JWT-based authentication for secure access.
+- **PokeAPI Integration**: Integration with PokeAPI for fetching Pokémon data.
+
+## Technologies Used
+
+- **Node.js**: JavaScript runtime for server-side development.
+- **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
+- **TypeORM**: ORM for managing database connections and models.
+- **JWT**: JSON Web Tokens for secure user authentication.
+- **PokeAPI**: External API used to fetch Pokémon data.
 
 ## Installation
 
-```bash
-$ npm install
-```
+To get a local copy up and running, follow these steps:
 
-## Running the app
+### Prerequisites
 
-```bash
-# development
-$ npm run start
+- **Node.js**: Ensure you have Node.js installed. [Download Node.js](https://nodejs.org/).
+- **npm**: Comes with Node.js, but make sure you have the latest version:
+  ```bash
+  npm install -g npm
+  ```
 
-# watch mode
-$ npm run start:dev
+### Steps
 
-# production mode
-$ npm run start:prod
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Nicolasfmc/poke_api_backend.git
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Start the development server:**
+   ```bash
+   npm run start:dev
+   ```
 
-## Test
+## API Endpoints
 
-```bash
-# unit tests
-$ npm run test
+Below are the current API endpoints available in the backend:
 
-# e2e tests
-$ npm run test:e2e
+### User Management
+- `GET /user/get-user`: Retrieve user details.
+- `GET /user/get-all`: Retrieve all users.
+- `POST /user/get-user-login`: Authenticate a user and provide a JWT.
+- `POST /user/register-user`: Register a new user (currently admin only).
+- `PUT /user/update-user`: Update user details.
+- `DELETE /user/delete-user`: Delete a user.
 
-# test coverage
-$ npm run test:cov
-```
+### Team Management
+- `GET /team/get-team`: Retrieve a user's team.
+- `POST /team/save-team`: Save a user's team.
+- `DELETE /team/delete-team`: Delete a user's team.
 
-## Support
+## Roadmap
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 🚧 Features In Progress / To Do
+- **Google Login**: Implement login and registration through Google accounts.
+- **User Registration API**: Create an API for user self-registration (currently only admins can register new users).
 
-## Stay in touch
+## Contributing
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Contributions are welcome! Please follow the steps below to contribute:
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Nicolasfmc/poke_api_backend/blob/main/LICENSE) file for details.
